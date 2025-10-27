@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=Poppins:wght@400;600&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle at top, #f0e6d2 0%, #e6d8b8 100%);
+    color: #222;
+    text-align: center;
+    padding: 2rem;
+}
+
+/* Caixas principais */
+#senha-section, #certificado-section {
+    max-width: 600px;
+    margin: 3rem auto;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.15);
+}
+
+input, button {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 0.8rem;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+button {
+    background: linear-gradient(90deg, #c19a46, #a67c00);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+button:hover {
+    background: linear-gradient(90deg, #a67c00, #c19a46);
+}
+
+/* Certificado retrô */
+.certificado {
+    position: relative;
+    background: #fffdf5 url('/assets/img/plufow-le-studio-2ltG_DVxIaU-unsplash.jpg') center center no-repeat;
+    background-size: cover;
+    border: 12px solid transparent;
+    border-image: linear-gradient(45deg, #d4af37, #f7e98e, #c9a43f, #f1d27c);
+    border-image-slice: 1;
+    border-radius: 20px;
+    padding: 3rem 1rem;
+    margin-top: 2rem;
+    text-align: center;
+    color: #3b2f1b;
+    box-shadow: 0 0 25px rgba(0,0,0,0.25);
+}
+
+/* Moldura interna */
+.certificado::before {
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    border: 2px solid #81672f;
+    border-radius: 12px;
+    pointer-events: none;
+}
+
+.certificado .logo {
+    width: 180px;
+    margin-bottom: 1rem;
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.2));
+}
+
+/* Títulos */
+.certificado-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    color: #a67c00;
+    margin-bottom: 0.5rem;
+}
+
+.certificado-content p {
+    font-size: 1rem;
+    color: #3b2f1b;
+}
+
+.certificado-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: #111;
+    margin: 0.8rem 0;
+}
+
+.certificado-content h3 {
+    font-size: 1.4rem;
+    color: #a67c00;
+    font-weight: 600;
+    margin-top: 0.8rem;
+}
+
+/* Foto circular */
+#certFoto {
+    width: 190px;
+    height: 190px;
+    border-radius: 50%;
+    margin-top: 1.5rem;
+    object-fit: cover;
+    border: 5px double #a67c00;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.25);
+}
+
+/* Assinatura */
+.assinatura {
+    position: absolute;
+    bottom: 30px;
+    right: 40px;
+    width: 180px;
+    opacity: 0.9;
+    filter: brightness(0.9);
+}
+
+/* Botão de baixar */
+#baixarCertificado {
+    background: linear-gradient(90deg, #b68c2d, #e0c15c);
+    color: #fff;
+    margin-top: 1rem;
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+#baixarCertificado:hover {
+    background: linear-gradient(90deg, #e0c15c, #b68c2d);
+}

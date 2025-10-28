@@ -1,4 +1,4 @@
-const SENHA_SISTEMA = "123";
+const SENHA_SISTEMA = "coronel2016@";
 
 // Verifica a senha antes de liberar o formulário
 document.getElementById("verificarSenha").addEventListener("click", () => {

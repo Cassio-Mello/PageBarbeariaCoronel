@@ -5,17 +5,19 @@ body {
     background: radial-gradient(circle at top, #f0e6d2 0%, #e6d8b8 100%);
     color: #222;
     text-align: center;
-    padding: 2rem;
+    padding: 1.5rem;
+    margin: 0;
 }
 
 /* Caixas principais */
 #senha-section, #certificado-section {
     max-width: 600px;
-    margin: 3rem auto;
+    margin: 2rem auto;
     background: #fff;
     padding: 2rem;
     border-radius: 15px;
     box-shadow: 0 0 25px rgba(0,0,0,0.15);
+    box-sizing: border-box;
 }
 
 input, button {
@@ -25,6 +27,7 @@ input, button {
     padding: 0.8rem;
     border-radius: 10px;
     border: 1px solid #ccc;
+    font-size: 1rem;
 }
 
 button {
@@ -50,36 +53,38 @@ button:hover {
     border-image: linear-gradient(45deg, #d4af37, #f7e98e, #c9a43f, #f1d27c);
     border-image-slice: 1;
     border-radius: 20px;
-    padding: 3rem 1rem;
+    padding: 2rem 1rem;
     margin-top: 2rem;
     text-align: center;
     color: #3b2f1b;
     box-shadow: 0 0 25px rgba(0,0,0,0.25);
+    box-sizing: border-box;
 }
 
 /* Moldura interna */
 .certificado::before {
     content: "";
     position: absolute;
-    top: 15px;
-    left: 15px;
-    right: 15px;
-    bottom: 15px;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
     border: 2px solid #81672f;
     border-radius: 12px;
     pointer-events: none;
 }
 
 .certificado .logo {
-    width: 180px;
+    width: 150px;
     margin-bottom: 1rem;
     filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.2));
+    max-width: 40vw;
 }
 
 /* Títulos */
 .certificado-content h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 2.4rem;
+    font-size: 2rem;
     color: #a67c00;
     margin-bottom: 0.5rem;
 }
@@ -87,17 +92,18 @@ button:hover {
 .certificado-content p {
     font-size: 1rem;
     color: #3b2f1b;
+    margin: 0.3rem 0;
 }
 
 .certificado-content h2 {
     font-family: 'Playfair Display', serif;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     color: #111;
     margin: 0.8rem 0;
 }
 
 .certificado-content h3 {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     color: #a67c00;
     font-weight: 600;
     margin-top: 0.8rem;
@@ -105,24 +111,15 @@ button:hover {
 
 /* Foto circular */
 #certFoto {
-    width: 190px;
-    height: 190px;
+    width: 160px;
+    height: 160px;
     border-radius: 50%;
-    margin-top: 1.5rem;
+    margin-top: 1.2rem;
     object-fit: cover;
     border: 5px double #a67c00;
     background: #fff;
     box-shadow: 0 0 10px rgba(0,0,0,0.25);
-}
-
-/* Assinatura */
-.assinatura {
-    position: absolute;
-    bottom: 30px;
-    right: 40px;
-    width: 180px;
-    opacity: 0.9;
-    filter: brightness(0.9);
+    max-width: 60vw;
 }
 
 /* Botão de baixar */
@@ -136,4 +133,51 @@ button:hover {
 
 #baixarCertificado:hover {
     background: linear-gradient(90deg, #e0c15c, #b68c2d);
+}
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 600px) {
+    body {
+        padding: 1rem;
+    }
+
+    #senha-section, #certificado-section {
+        padding: 1.5rem;
+        margin: 1.5rem auto;
+    }
+
+    .certificado {
+        padding: 1.5rem 0.5rem;
+        border-width: 8px;
+    }
+
+    .certificado-content h1 {
+        font-size: 1.6rem;
+    }
+
+    .certificado-content h2 {
+        font-size: 1.3rem;
+    }
+
+    .certificado-content h3 {
+        font-size: 1.1rem;
+    }
+
+    .certificado-content p {
+        font-size: 0.9rem;
+    }
+
+    #certFoto {
+        width: 130px;
+        height: 130px;
+    }
+
+    .certificado .logo {
+        width: 120px;
+    }
+
+    button, input {
+        font-size: 0.95rem;
+        padding: 0.7rem;
+    }
 }

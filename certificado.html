@@ -6,53 +6,52 @@
     <title>Certificado 1º Corte - Barbearia Coronel</title>
     <link rel="stylesheet" href="./assets/css/certificado.css">
 </head>
-    <body>
+<body>
 
-        <!-- Tela de senha -->
-        <section id="senha-section">
-            <h2>Acesso Restrito</h2>
-            <p>Digite a senha para gerar o certificado:</p>
-            <input type="password" id="senhaInput" placeholder="Digite a senha">
-            <button id="verificarSenha">Entrar</button>
-        </section>
+    <!-- Tela de senha -->
+    <section id="senha-section">
+        <h2>Acesso Restrito</h2>
+        <p>Digite a senha para gerar o certificado:</p>
+        <input type="password" id="senhaInput" placeholder="Digite a senha">
+        <button id="verificarSenha">Entrar</button>
+    </section>
 
-        <!-- Formulário de geração -->
-        <section id="certificado-section" style="display: none;">
-            <h2>Gerar ✂️Certificado 1º Corte✂️</h2>
-            <form id="certificadoForm">
-                <label for="nome">Nome da Criança:</label>
-                <input type="text" id="nome" required>
+    <!-- Formulário de geração -->
+    <section id="certificado-section" style="display: none;">
+        <h2>✂️ Gerar Certificado 1º Corte ✂️</h2>
+        <form id="certificadoForm">
+            <label for="nome">Nome da Criança:</label>
+            <input type="text" id="nome" required>
 
-                <label for="idade">Idade:</label>
-                <input type="number" id="idade" required>
+            <label for="idade">Idade:</label>
+            <input type="number" id="idade" required>
 
-                <label for="data">Data:</label>
-                <input type="date" id="data" required>
+            <label for="data">Data:</label>
+            <input type="date" id="data" required>
 
-                <label for="foto">Foto da Criança:</label>
-                <input type="file" id="foto" accept="image/*">
+            <label for="foto">Foto da Criança:</label>
+            <input type="file" id="foto" accept="image/*">
 
-                <button type="submit" href="#certificado">Gerar Certificado</button>
-            </form>
+            <button type="submit">Gerar Certificado</button>
+        </form>
 
-            <div id="certificado" class="certificado" style="display:none;">
-                <img src="./assets/img/logo-coronel.png" class="logo" alt="Logo Barbearia Coronel">
-                <div class="certificado-content">
-                    <h1>✂️Certificado de 1º Corte✂️</h1>
-                    <p>Este certificado é concedido a</p>
-                    <h2 id="certNome"></h2>
-                    <p>em comemoração ao seu primeiro corte de cabelo na</p>
-                    <h3>💈Barbearia Coronel💈</h3>
-                    <p id="certData"></p>
-                    <img id="certFoto" alt="Foto da criança">
-                </div>
-                <!--<img src="./assets/img/assinatura-coronel.png" class="assinatura" alt="Assinatura do barbeiro">-->
+        <div id="certificado" class="certificado" style="display:none;">
+            <img src="./assets/img/logo-coronel.png" class="logo" alt="Logo Barbearia Coronel">
+            <div class="certificado-content">
+                <h1>✂️ Certificado de 1º Corte ✂️</h1>
+                <p>Este certificado é concedido a</p>
+                <h2 id="certNome"></h2>
+                <p>em comemoração ao seu primeiro corte de cabelo na</p>
+                <h3>Barbearia Coronel</h3>
+                <p id="certData"></p>
+                <img id="certFoto" alt="Foto da criança">
             </div>
+        </div>
 
-            <button id="baixarCertificado" style="display:none;">Baixar Certificado</button>
-        </section>
+        <button id="baixarCertificado" style="display:none;">Baixar Certificado</button>
+    </section>
 
-        <script src="./assets/libs/html2canvas.min.js"></script>
-        <script src="./assets/scripts/certificado.js"></script>
-    </body>
+    <script src="./assets/libs/html2canvas.min.js"></script>
+    <script src="./assets/scripts/certificado.js"></script>
+</body>
 </html>

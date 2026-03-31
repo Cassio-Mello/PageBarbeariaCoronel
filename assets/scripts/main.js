@@ -1,4 +1,13 @@
 const phoneNumber = '5551996474873'
+const businessHours = {
+    0: null,
+    1: null,
+    2: { start: 8, end: 20 },
+    3: { start: 8, end: 20 },
+    4: { start: 8, end: 20 },
+    5: { start: 8, end: 20 },
+    6: { start: 8, end: 17 }
+};
 
 // ======== ANIMAÇÃO DE SCROLL ========
 function animateOnScroll() {
@@ -47,8 +56,9 @@ function handleBookingFormSubmit(event) {
         return;
     }
 
-    sendToWhatsApp(name, phone, service, date, time);
+    sendToWhatsApp(name, phone, service, formatDate(date), time);
     event.target.reset();
+    updateAvailableSchedules();
 }
 
 function initBookingForm() {
@@ -63,6 +73,11 @@ function toggleMobileMenu() {
 
     mobileMenu.classList.toggle('active');
     mobileMenuBtn.textContent = mobileMenu.classList.contains('active') ? '✕' : '☰';
+    mobileMenuBtn.setAttribute('aria-expanded', String(mobileMenu.classList.contains('active')));
+    mobileMenuBtn.setAttribute(
+        'aria-label',
+        mobileMenu.classList.contains('active') ? 'Fechar menu de navegação' : 'Abrir menu de navegação'
+    );
 }
 
 function closeMobileMenu() {
@@ -71,6 +86,8 @@ function closeMobileMenu() {
 
     mobileMenu.classList.remove('active');
     mobileMenuBtn.textContent = '☰';
+    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+    mobileMenuBtn.setAttribute('aria-label', 'Abrir menu de navegação');
 }
 
 function initMobileMenu() {
@@ -119,24 +136,71 @@ function initSmoothScroll() {
     });
 }
 
-// Função para gerar opções de horários de 30 em 30 minutos
-function initGenerateShedules() {
+function formatDate(dateValue) {
+    const [year, month, day] = dateValue.split('-');
+    return `${day}/${month}/${year}`;
+}
+
+function setDateMinValue() {
+    const dateInput = document.getElementById('date');
+    if (!dateInput) return;
+
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+
+    dateInput.min = `${year}-${month}-${day}`;
+}
+
+function createTimeOption(timeSelect, value, label, disabled = false) {
+    const option = document.createElement('option');
+    option.value = value;
+    option.textContent = label;
+    option.disabled = disabled;
+    option.selected = disabled;
+    timeSelect.appendChild(option);
+}
+
+function updateAvailableSchedules() {
     const timeSelect = document.getElementById('time');
-    if (!timeSelect) return; // evita erro se o elemento não existir
+    const dateInput = document.getElementById('date');
+    if (!timeSelect || !dateInput) return;
 
-    const startHour = 8;  // início do expediente (08:00)
-    const endHour = 20;   // fim do expediente (20:00)
+    timeSelect.innerHTML = '';
 
-    for (let h = startHour; h <= endHour; h++) {
-        for (let m of [0, 30]) { // incrementa de 30 em 30 min
+    if (!dateInput.value) {
+        createTimeOption(timeSelect, '', 'Selecione uma data primeiro', true);
+        return;
+    }
+
+    const selectedDate = new Date(`${dateInput.value}T12:00:00`);
+    const weekday = selectedDate.getDay();
+    const schedule = businessHours[weekday];
+
+    if (!schedule) {
+        createTimeOption(timeSelect, '', 'Barbearia fechada nesta data', true);
+        return;
+    }
+
+    createTimeOption(timeSelect, '', 'Selecione um horário');
+
+    for (let h = schedule.start; h < schedule.end; h++) {
+        for (const m of [0, 30]) {
             const hora = h.toString().padStart(2, '0');
             const minuto = m.toString().padStart(2, '0');
-            const option = document.createElement('option');
-            option.value = `${hora}:${minuto}`;
-            option.textContent = `${hora}:${minuto}`;
-            timeSelect.appendChild(option);
+            createTimeOption(timeSelect, `${hora}:${minuto}`, `${hora}:${minuto}`);
         }
     }
+}
+
+function initGenerateSchedules() {
+    const dateInput = document.getElementById('date');
+    if (!dateInput) return;
+
+    setDateMinValue();
+    updateAvailableSchedules();
+    dateInput.addEventListener('change', updateAvailableSchedules);
 }
 
 // ======== INICIALIZAÇÃO GERAL ========
@@ -146,7 +210,7 @@ function initSite() {
     initMobileMenu();
     initNavbarScroll();
     initSmoothScroll();
-    initGenerateShedules();
+    initGenerateSchedules();
 }
 
 // Inicializa tudo quando a página carregar

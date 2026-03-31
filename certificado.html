@@ -3,53 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Certificado 1º Corte - Barbearia Coronel</title>
+    <title>Primeiro Corte - Barbearia Coronel</title>
+    <meta name="description" content="Gerador de post de primeiro corte da Barbearia Coronel para redes sociais.">
     <link rel="stylesheet" href="./assets/css/certificado.css">
 </head>
 <body>
+    <main class="page-shell">
+        <section class="access-card" id="senha-section">
+            <div class="access-badge">Area interna</div>
+            <h1>Post de Primeiro Corte</h1>
+            <p>Entre com a senha para montar um certificado infantil em formato de post para rede social.</p>
 
-    <!-- Tela de senha -->
-    <section id="senha-section">
-        <h2>Acesso Restrito</h2>
-        <p>Digite a senha para gerar o certificado:</p>
-        <input type="password" id="senhaInput" placeholder="Digite a senha">
-        <button id="verificarSenha">Entrar</button>
-    </section>
-
-    <!-- Formulário de geração -->
-    <section id="certificado-section" style="display: none;">
-        <h2>✂️ Gerar Certificado 1º Corte ✂️</h2>
-        <form id="certificadoForm">
-            <label for="nome">Nome da Criança:</label>
-            <input type="text" id="nome" required>
-
-            <label for="idade">Idade:</label>
-            <input type="number" id="idade" required>
-
-            <label for="data">Data:</label>
-            <input type="date" id="data" required>
-
-            <label for="foto">Foto da Criança:</label>
-            <input type="file" id="foto" accept="image/*">
-
-            <button type="submit">Gerar Certificado</button>
-        </form>
-
-        <div id="certificado" class="certificado" style="display:none;">
-            <img src="./assets/img/logo-coronel.png" class="logo" alt="Logo Barbearia Coronel">
-            <div class="certificado-content">
-                <h1>✂️ Certificado de 1º Corte ✂️</h1>
-                <p>Este certificado é concedido a</p>
-                <h2 id="certNome"></h2>
-                <p>em comemoração ao seu primeiro corte de cabelo na</p>
-                <h3>Barbearia Coronel</h3>
-                <p id="certData"></p>
-                <img id="certFoto" alt="Foto da criança">
+            <div class="access-form">
+                <label for="senhaInput">Senha de acesso</label>
+                <input type="password" id="senhaInput" placeholder="Digite a senha">
+                <button id="verificarSenha" type="button">Entrar no gerador</button>
+                <p class="access-hint">Barbearia Coronel</p>
             </div>
-        </div>
+        </section>
 
-        <button id="baixarCertificado" style="display:none;">Baixar Certificado</button>
-    </section>
+        <section class="studio" id="certificado-section" hidden>
+            <header class="studio-header">
+                <div>
+                    <p class="eyebrow">Criador de post</p>
+                    <h1>Certificado de Primeiro Corte</h1>
+                    <p>Monte a arte com a foto da crianca, nome e data do corte. O layout ja sai pronto para publicar.</p>
+                </div>
+                <a class="back-link" href="./index.html">Voltar para o site</a>
+            </header>
+
+            <div class="studio-grid">
+                <section class="control-panel">
+                    <div class="panel-card">
+                        <h2>Dados do post</h2>
+                        <form id="certificadoForm" class="certificado-form">
+                            <div class="field">
+                                <label for="nome">Nome da crianca</label>
+                                <input type="text" id="nome" placeholder="Ex.: Miguel" maxlength="30" required>
+                            </div>
+
+                            <div class="field">
+                                <label for="data">Data do corte</label>
+                                <input type="date" id="data" required>
+                            </div>
+
+                            <div class="field">
+                                <label for="tema">Moldura tematica</label>
+                                <select id="tema" required>
+                                    <option value="classic">Classico dourado</option>
+                                    <option value="fun">Divertido colorido</option>
+                                    <option value="soft">Fofo pastel</option>
+                                    <option value="easter">Pascoa</option>
+                                    <option value="christmas">Natal</option>
+                                </select>
+                            </div>
+
+                            <div class="field">
+                                <label for="frase">Frase personalizada</label>
+                                <textarea id="frase" rows="3" maxlength="90" placeholder="Ex.: Um dia especial para guardar para sempre."></textarea>
+                                <p class="field-help">Se deixar em branco, usamos uma frase pronta.</p>
+                            </div>
+
+                            <div class="field">
+                                <label for="foto">Foto da crianca</label>
+                                <input type="file" id="foto" accept="image/*" required>
+                                <p class="field-help">Use uma foto de frente ou em meio corpo para o post ficar mais bonito.</p>
+                            </div>
+
+                            <div class="actions">
+                                <button type="submit" class="primary-btn">Gerar post</button>
+                                <button type="button" id="baixarCertificado" class="secondary-btn" disabled>Baixar post quadrado</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="panel-card tips-card">
+                        <h2>O que esta incluso</h2>
+                        <ul>
+                            <li>Tres molduras para variar o visual do post.</li>
+                            <li>Frase personalizada para deixar a arte mais emocional.</li>
+                            <li>Download em formato quadrado pronto para publicar.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="preview-panel">
+                    <div class="preview-head">
+                        <h2>Previa do post</h2>
+                        <p>O download gera a arte exatamente neste formato.</p>
+                    </div>
+
+                    <div class="preview-stack">
+                        <div class="post-stage">
+                            <article class="social-post theme-classic" id="certificado">
+                                <div class="post-pattern post-pattern-top"></div>
+                                <div class="post-pattern post-pattern-bottom"></div>
+                                <div class="post-star post-star-left"></div>
+                                <div class="post-star post-star-right"></div>
+                                <div class="theme-decor decor-bunny" aria-hidden="true"></div>
+                                <div class="theme-decor decor-egg decor-egg-left" aria-hidden="true"></div>
+                                <div class="theme-decor decor-egg decor-egg-right" aria-hidden="true"></div>
+                                <div class="theme-decor decor-tree" aria-hidden="true"></div>
+                                <div class="theme-decor decor-santa" aria-hidden="true"></div>
+                                <div class="theme-decor decor-gift" aria-hidden="true"></div>
+
+                                <header class="post-header">
+                                    <div class="brand-mark">
+                                        <img src="./assets/img/logo-coronel.png" alt="Logo da Barbearia Coronel">
+                                    </div>
+                                    <div class="brand-copy">
+                                        <span>Barbearia Coronel</span>
+                                        <strong>Primeiro Corte</strong>
+                                    </div>
+                                </header>
+
+                                <div class="post-content">
+                                    <div class="post-copy">
+                                        <p class="mini-label">Momento especial</p>
+                                        <h2>Meu primeiro corte</h2>
+                                        <p class="lead">Um dia de coragem, estilo e muitas lembrancas boas.</p>
+                                    </div>
+
+                                    <div class="post-main">
+                                        <div class="photo-frame">
+                                            <div class="photo-ring">
+                                                <img id="certFoto" src="" alt="Foto da crianca no primeiro corte">
+                                                <div class="photo-placeholder" id="photoPlaceholder">
+                                                    <span class="placeholder-title">Sua foto aparece aqui</span>
+                                                    <span class="placeholder-copy">Escolha uma imagem para montar o post.</span>
+                                                </div>
+                                            </div>
+                                            <div class="floating-tag">Primeira vez na cadeira</div>
+                                        </div>
+
+                                        <div class="post-side">
+                                            <div class="post-name-box">
+                                                <span class="name-caption">Certificamos que</span>
+                                                <strong id="certNome">Nome da crianca</strong>
+                                            </div>
+
+                                            <div class="post-footer">
+                                                <div class="date-chip">
+                                                    <span>Data do corte</span>
+                                                    <strong id="certData">__/__/____</strong>
+                                                </div>
+                                                <div class="celebration-copy">
+                                                    <span id="certFrase">Estilo de gente grande com clima de infancia.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </main>
 
     <script src="./assets/libs/html2canvas.min.js"></script>
     <script src="./assets/scripts/certificado.js"></script>
